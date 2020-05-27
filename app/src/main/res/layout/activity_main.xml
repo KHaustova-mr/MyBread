@@ -119,7 +119,7 @@
 
 
                 <ImageView
-                    android:id="@+id/timer_image_view"
+                    android:id="@+id/ok_image_view"
                     android:layout_width="@dimen/icon_image_view_height"
                     android:layout_height="@dimen/icon_image_view_height"
                     android:src="@drawable/timer"

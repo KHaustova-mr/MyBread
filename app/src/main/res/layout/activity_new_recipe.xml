@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/search_image_view"
                 android:background="@null"
-                android:hint="Название блока" />
+                android:hint="Текст рецепта" />
 
         </androidx.cardview.widget.CardView>
 
@@ -128,15 +128,16 @@
 
 
                 <ImageView
-                    android:id="@+id/timer_image_view"
+                    android:id="@+id/ok_image_view"
                     android:layout_width="@dimen/icon_image_view_height"
                     android:layout_height="@dimen/icon_image_view_height"
-                    android:src="@drawable/timer"
+                    android:src="@drawable/ok"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="OkClick"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
