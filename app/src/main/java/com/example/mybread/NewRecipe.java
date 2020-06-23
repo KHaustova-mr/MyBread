@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mybread.model.Recipe;
 import com.example.mybread.model.RecipeOnFile;
 
 import java.io.BufferedReader;
@@ -71,11 +72,21 @@ public class NewRecipe extends AppCompatActivity {
     ImageView ImageRecipe;
 
     public void OkClick(View view) {
-
         TextId = (EditText) findViewById(R.id.name_new_recipeText);
         TextSite = (EditText) findViewById(R.id.edit_siteText);
         TextRecipe = (EditText) findViewById(R.id.name_blockText);
         ImageRecipe = (ImageView) findViewById(R.id.new_recipe_image_view);
-        RecipeOnFile newrecipe = new RecipeOnFile(TextId.getText().toString(), TextSite.getText().toString(), TextRecipe.getText().toString(), filePath);
+
+        Recipe recipe = new Recipe();
+        recipe.setId(TextId.getText().toString());
+        recipe.setSite(TextSite.getText().toString());
+        recipe.setText(TextRecipe.getText().toString());
+
+        recipe.setPathimage("url картинки");
+
+        System.out.println(recipe.toString());
+
+
+        //RecipeOnFile newrecipe = new RecipeOnFile(TextId.getText().toString(), TextSite.getText().toString(), TextRecipe.getText().toString(), filePath);
     }
 }
