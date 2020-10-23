@@ -9,6 +9,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.mybread.model.Recipe;
+import com.example.mybread.saveData.RecipeOnFile;
+
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout contentLinearLayout;
@@ -17,9 +22,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
-        contentLinearLayout = (LinearLayout) findViewById(R.id.content_linearLayout);
         setContentView(R.layout.activity_main);
-        for(int i = 0; i < 10; i++){
+        contentLinearLayout =  findViewById(R.id.content_linearLayout);
+        ArrayList<Recipe> recipes = RecipeOnFile.getRecipes(this);
+        System.out.println(recipes);
+        for(Recipe recipe : recipes){
             LinearLayout itemLinearLayout = new LinearLayout(this);
             itemLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             itemLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -33,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
             //children of layout2 LinearLayout
             TextView tv1 = new TextView(this);
             TextView tv2 = new TextView(this);
-            tv1.setText("text1");
-            tv2.setText("text2");
+            tv1.setText(recipe.getId());
+            tv2.setText(recipe.getText());
             layout2.addView(tv1);
             layout2.addView(tv2);
             contentLinearLayout.addView(itemLinearLayout);

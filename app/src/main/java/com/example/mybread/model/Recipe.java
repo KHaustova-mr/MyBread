@@ -2,7 +2,9 @@ package com.example.mybread.model;
 
 import androidx.annotation.NonNull;
 
-public class Recipe {
+import java.io.Serializable;
+
+public class Recipe implements Serializable {
     String id;
     String site;
     String text;

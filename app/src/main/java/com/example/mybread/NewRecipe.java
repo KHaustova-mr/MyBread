@@ -70,7 +70,8 @@ public class NewRecipe extends AppCompatActivity {
         }
     }
 
-    public void OkClick(View view) {
+    public void SaveClick(View view){
+        System.out.println("Нажатие на кнопку");
         Recipe recipe = new Recipe();
         recipe.setId(TextId.getText().toString());
         recipe.setSite(TextSite.getText().toString());
@@ -79,5 +80,7 @@ public class NewRecipe extends AppCompatActivity {
         recipe.setPathimage("url картинки");
 
         RecipeOnFile.saveRecipe(this, recipe);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
