@@ -11,27 +11,29 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import com.example.mybread.model.Recipe;
-import com.example.mybread.model.RecipeOnFile;
+import com.example.mybread.saveData.RecipeOnFile;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+
 
 public class NewRecipe extends AppCompatActivity {
     static final int GALLERY_REQUEST = 1;
+    EditText TextId, TextSite, TextRecipe;
+    ImageView ImageRecipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_recipe);
+
+        TextId = (EditText) findViewById(R.id.name_new_recipeText);
+        TextSite = (EditText) findViewById(R.id.edit_siteText);
+        TextRecipe = (EditText) findViewById(R.id.name_blockText);
+        ImageRecipe = (ImageView) findViewById(R.id.new_recipe_image_view);
     }
 
     public void newImageOnClick(View view) {
@@ -39,11 +41,11 @@ public class NewRecipe extends AppCompatActivity {
         photoPickerIntent.setType("image/*");
         startActivityForResult(photoPickerIntent, GALLERY_REQUEST);
     }
-    String filePath;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-
+        String filePath;
         Bitmap bitmap = null;
         ImageView imageView = (ImageView) findViewById(R.id.new_recipe_image_view);
 
@@ -68,15 +70,7 @@ public class NewRecipe extends AppCompatActivity {
         }
     }
 
-    EditText TextId, TextSite, TextRecipe;
-    ImageView ImageRecipe;
-
     public void OkClick(View view) {
-        TextId = (EditText) findViewById(R.id.name_new_recipeText);
-        TextSite = (EditText) findViewById(R.id.edit_siteText);
-        TextRecipe = (EditText) findViewById(R.id.name_blockText);
-        ImageRecipe = (ImageView) findViewById(R.id.new_recipe_image_view);
-
         Recipe recipe = new Recipe();
         recipe.setId(TextId.getText().toString());
         recipe.setSite(TextSite.getText().toString());
@@ -84,9 +78,6 @@ public class NewRecipe extends AppCompatActivity {
 
         recipe.setPathimage("url картинки");
 
-        System.out.println(recipe.toString());
-
-
-        //RecipeOnFile newrecipe = new RecipeOnFile(TextId.getText().toString(), TextSite.getText().toString(), TextRecipe.getText().toString(), filePath);
+        RecipeOnFile.saveRecipe(this, recipe);
     }
 }
