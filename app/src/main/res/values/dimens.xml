@@ -11,5 +11,6 @@
     <dimen name="emblem_height">30dp</dimen>
     <dimen name="edit_gram">30dp</dimen>
     <dimen name="icon_margin">4dp</dimen>
+    <dimen name="avatar_height">60dp</dimen>
     emblem
 </resources>
