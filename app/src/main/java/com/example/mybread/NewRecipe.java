@@ -77,7 +77,7 @@ public class NewRecipe extends AppCompatActivity {
         recipe.setSite(TextSite.getText().toString());
         recipe.setText(TextRecipe.getText().toString());
 
-        recipe.setPathImage("");
+        recipe.setPathimage("url картинки");
 
         RecipeOnFile.saveRecipe(this, recipe);
         Intent intent = new Intent(this, MainActivity.class);

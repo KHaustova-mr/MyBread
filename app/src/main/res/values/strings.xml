@@ -1,4 +1,3 @@
 <resources>
     <string name="app_name">MyBread</string>
-    <string name="recipe_name">Название рецепта</string>
 </resources>
