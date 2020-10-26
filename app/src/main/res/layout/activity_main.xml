@@ -54,19 +54,21 @@
 
                     <EditText
                         android:id="@+id/editText"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/search_image_view"
-                        android:layout_toLeftOf="@id/add_image_view"
+                        android:layout_toLeftOf="@id/del_image_view"
                         android:hint="Найти рецепт" />
 
                     <ImageView
-                        android:id="@+id/add_image_view"
+                        android:id="@+id/del_image_view"
+                        android:onTextChange="delTextChange"
                         android:layout_width="@dimen/image_view_height"
                         android:layout_height="@dimen/image_view_height"
-                        android:src="@drawable/add"
+                        android:src="@drawable/del"
                         android:layout_alignParentRight="true"
-                        android:onClick="AddClick"/>
+                        android:onClick="DelClick"/>
 
 
                 </RelativeLayout>
@@ -126,11 +128,11 @@
 
 
                <ImageView
-                    android:id="@+id/ok_image_view"
+                    android:id="@+id/add_image_view"
+                    android:onClick="AddClick"
                     android:layout_width="@dimen/icon_image_view_height"
                     android:layout_height="@dimen/icon_image_view_height"
-                    android:src="@drawable/timer"
-                    android:visibility="invisible"
+                    android:src="@drawable/add"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -139,7 +141,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
-                android:layout_width="376dp"
+                android:layout_width="368dp"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 

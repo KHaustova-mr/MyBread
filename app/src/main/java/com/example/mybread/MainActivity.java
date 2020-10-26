@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,6 +21,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        /* EditText editText = (EditText)findViewById(R.id.editText);
+        ((EditText)findViewById(R.id.editText)).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                String strCatName = editText.getText().toString();
+                if (!hasFocus) {
+
+                }
+            }
+        });*/
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -53,5 +66,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void DelClick(View view) {
+        TextView search = (TextView)findViewById(R.id.editText);
+        search.setText("");
+    }
 
+   /*  final EditText editText = (EditText)findViewById(R.id.editText);
+   public void onTextChanged(CharSequence s, int start, int before, int count) {
+//только что заменены
+        String strCatName = editText.getText().toString();
+        editText=
+    }*/
 }
+
