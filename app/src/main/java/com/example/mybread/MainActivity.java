@@ -1,9 +1,12 @@
 package com.example.mybread;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mybread.model.Recipe;
+import com.example.mybread.model.Record;
 import com.example.mybread.saveData.RecipeOnFile;
 
 import java.util.ArrayList;
@@ -18,28 +22,26 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout contentLinearLayout;
+    protected RecyclerView recordList;
+    protected RecordListAdapter recordListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /* EditText editText = (EditText)findViewById(R.id.editText);
-        ((EditText)findViewById(R.id.editText)).setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-                String strCatName = editText.getText().toString();
-                if (!hasFocus) {
-
-                }
-            }
-        });*/
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        contentLinearLayout =  findViewById(R.id.content_linearLayout);
-        ArrayList<Recipe> recipes = RecipeOnFile.getRecipes(this);
-        System.out.println(recipes);
-        for(Recipe recipe : recipes){
+        //contentLinearLayout =  findViewById(R.id.content_linearLayout);
+        //ArrayList<Recipe> recipes = RecipeOnFile.getRecipes(this);
+        //System.out.println(recipes);
+        recordListAdapter = new RecordListAdapter();
+        recordList = findViewById(R.id.recordList);
+        recordList.setLayoutManager(new LinearLayoutManager(this));
+        recordList.setAdapter(recordListAdapter);
+
+        recordList.setLayoutManager(new LinearLayoutManager(this));
+        recordList.setAdapter(recordListAdapter);
+        /*for(Recipe recipe : recipes){
             LinearLayout itemLinearLayout = new LinearLayout(this);
             itemLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             itemLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -57,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
             tv2.setText(recipe.getText());
             layout2.addView(tv1);
             layout2.addView(tv2);
-            contentLinearLayout.addView(itemLinearLayout);
-        }
+            contentLinearLayout.addView(itemLinearLayout);}*/
     }
 
     public void AddClick(View view) {

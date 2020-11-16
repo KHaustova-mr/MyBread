@@ -63,7 +63,6 @@
 
                     <ImageView
                         android:id="@+id/del_image_view"
-                        android:onTextChange="delTextChange"
                         android:layout_width="@dimen/image_view_height"
                         android:layout_height="@dimen/image_view_height"
                         android:src="@drawable/del"
@@ -96,6 +95,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/heading_cardView"
             app:layout_constraintVertical_bias="0.13999999">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recordList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <LinearLayout
                 android:id="@+id/content_linearLayout"
