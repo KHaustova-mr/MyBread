@@ -1,17 +1,14 @@
 package com.example.mybread;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.mybread.model.Recipe;
 import com.example.mybread.model.Record;
@@ -23,22 +20,28 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout contentLinearLayout;
     protected RecyclerView recordList;
-    protected RecordListAdapter recordListAdapter;
+    protected RecordAdapter recordAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //contentLinearLayout =  findViewById(R.id.content_linearLayout);
         //ArrayList<Recipe> recipes = RecipeOnFile.getRecipes(this);
         //System.out.println(recipes);
-        recordListAdapter = new RecordListAdapter();
+        recordAdapter = new RecordAdapter();
         recordList = findViewById(R.id.recordList);
         recordList.setLayoutManager(new LinearLayoutManager(this));
-        recordList.setAdapter(recordListAdapter);
+        recordList.setAdapter(recordAdapter);
 
+        ArrayList<Recipe> recipes = RecipeOnFile.getRecipes(this);
+        for (Recipe recipe : recipes){
+            Record recipeRecord = new Record(recipe.getId());
+            recordAdapter.recipeList.add(recipeRecord);
+        }
+
+ /*
         recordList.setLayoutManager(new LinearLayoutManager(this));
         recordList.setAdapter(recordListAdapter);
         /*for(Recipe recipe : recipes){

@@ -1,7 +1,5 @@
 package com.example.mybread;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -12,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mybread.model.Recipe;
 import com.example.mybread.saveData.RecipeOnFile;
@@ -47,7 +46,6 @@ public class NewRecipe extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         String filePath;
         Bitmap bitmap = null;
-        ImageView imageView = (ImageView) findViewById(R.id.new_recipe_image_view);
 
         switch(requestCode) {
             case GALLERY_REQUEST:
@@ -65,7 +63,7 @@ public class NewRecipe extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    imageView.setImageBitmap(bitmap);
+                    ImageRecipe.setImageBitmap(bitmap);
                 }
         }
     }
@@ -76,8 +74,6 @@ public class NewRecipe extends AppCompatActivity {
         recipe.setId(TextId.getText().toString());
         recipe.setSite(TextSite.getText().toString());
         recipe.setText(TextRecipe.getText().toString());
-
-        recipe.setPathimage("url картинки");
 
         RecipeOnFile.saveRecipe(this, recipe);
         Intent intent = new Intent(this, MainActivity.class);

@@ -8,7 +8,7 @@ public class Recipe implements Serializable {
     String id;
     String site;
     String text;
-    String pathimage;
+    String imagePath;
 
     public Recipe() {
     }
@@ -25,8 +25,8 @@ public class Recipe implements Serializable {
         return text;
     }
 
-    public String getPathimage() {
-        return pathimage;
+    public String getImagePath() {
+        return imagePath;
     }
 
     public void setId(String id) {
@@ -41,14 +41,14 @@ public class Recipe implements Serializable {
         this.text = text;
     }
 
-    public void setPathimage(String pathimage) {
-        this.pathimage = pathimage;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
 
     @NonNull
     @Override
     public String toString() {
-        return this.getId() + "  " + this.getText() + "  " + this.getSite() + "  " + this.getPathimage();
+        return this.getId() + "  " + this.getText() + "  " + this.getSite();
     }
 }
